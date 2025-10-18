@@ -1,0 +1,8 @@
+from cryptography.fernet import Fernet
+
+key = b'your_encryption_key_here'
+cipher_suite = Fernet(key)
+with open('wallet_backup.enc', 'rb') as file:
+    encrypted_data = file.read()
+seed_phrase = cipher_suite.decrypt(encrypted_data)
+print(seed_phrase.decode())
